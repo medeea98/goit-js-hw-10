@@ -41,12 +41,15 @@ document.addEventListener("DOMContentLoaded", function () {
           const [cat] = catData;
 
           catImage.src = cat.url;
-          catName.textContent = `Breed: ${cat.breeds[0].name}`;
-          catDescription.textContent = `Description: ${cat.breeds[0].description}`;
-          catTemperament.textContent = `Temperament: ${cat.breeds[0].temperament}`;
+          catName.textContent = `${cat.breeds[0].name}`;
+          catDescription.textContent = `${cat.breeds[0].description}`;
+          catTemperament.textContent = `${cat.breeds[0].temperament}`;
 
           loader.style.display = 'none';
-          catInfo.style.display = 'block';
+          catInfo.style.display = 'flex';
+          catInfo.style.justifyContent = 'space-between';
+          catInfo.style.alignItems = 'center';
+
         })
         .catch(function () {
           loader.style.display = 'none';
