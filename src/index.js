@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   loader.style.display = 'none';
   error.style.display = 'none';
-  catInfo.style.display = 'none';
+  catInfo.style.display = 'flex';
 
   if (selectElement) {
     selectElement.addEventListener('change', function () {
