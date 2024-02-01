@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (selectElement) {
     selectElement.addEventListener('change', function () {
-      const selectedOption = breedSelect.selected();
-      const selectedBreedId = selectedOption[0].value;
+      const selectedOption = breedSelect.getData()[0];
+      const selectedBreedId = selectedOption.value;
 
       loader.style.display = 'block';
       error.style.display = 'none';
@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   fetchBreeds()
     .then(function (breeds) {
-      breedSelect.setData(breeds.map(breed => ({ value: breed.id, text: breed.name })));
+      breedSelect.setData(breeds.map(breed => ({ text: breed.name, value: breed.id })));
     })
     .catch(function () {
       error.style.display = 'block';
