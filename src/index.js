@@ -14,15 +14,24 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const createCatInfoElement = (tagName) => {
     const element = document.createElement(tagName);
-    catInfo.appendChild(element);
+    /*catInfo.appendChild(element);*/
     return element;
   };
 
   const catImage = createCatInfoElement('img');
+  const catTextContainer = createCatInfoElement('div')
+  catInfo.appendChild(catImage);
+  catInfo.appendChild(catTextContainer);
+  catTextContainer.classList.add('cat-text-container')
   const catName = createCatInfoElement('p');
   const catDescription = createCatInfoElement('p');
   const catTemperament = createCatInfoElement('p');
-
+  catTextContainer.appendChild(catName);
+  catTextContainer.appendChild(catDescription);
+  catTextContainer.appendChild(catTemperament);
+  catName.classList.add('cat-name')
+  catDescription.classList.add('cat-description')
+  catTemperament.classList.add('cat-temperament')
   loader.style.display = 'none';
   error.style.display = 'none';
   catInfo.style.display = 'flex';
@@ -43,12 +52,12 @@ document.addEventListener("DOMContentLoaded", function () {
           catImage.src = cat.url;
           catName.textContent = `${cat.breeds[0].name}`;
           catDescription.textContent = `${cat.breeds[0].description}`;
-          catTemperament.textContent = `${cat.breeds[0].temperament}`;
+          catTemperament.textContent = `Temperament: ${cat.breeds[0].temperament}`;
 
           loader.style.display = 'none';
           catInfo.style.display = 'flex';
           catInfo.style.justifyContent = 'space-between';
-          catInfo.style.alignItems = 'center';
+         
 
         })
         .catch(function () {
