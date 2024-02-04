@@ -38,8 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (selectElement) {
     selectElement.addEventListener('change', function () {
-      const selectedOption = breedSelect.getData()[0];
-      const selectedBreedId = selectedOption.value;
+      const selectedBreedId = breedSelect.getSelected();
 
       loader.style.display = 'block';
       error.style.display = 'none';
@@ -47,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       fetchCatByBreed(selectedBreedId)
         .then(function (catData) {
+          
           const [cat] = catData;
 
           catImage.src = cat.url;
@@ -57,18 +57,19 @@ document.addEventListener("DOMContentLoaded", function () {
           loader.style.display = 'none';
           catInfo.style.display = 'flex';
           catInfo.style.justifyContent = 'space-between';
-         
+      
 
         })
         .catch(function () {
           loader.style.display = 'none';
           error.style.display = 'block';
         });
+        
     });
   } else {
     console.error('Select element is not found.');
   }
-
+ 
   fetchBreeds()
     .then(function (breeds) {
       breedSelect.setData(breeds.map(breed => ({ text: breed.name, value: breed.id })));
